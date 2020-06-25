@@ -10,6 +10,7 @@ def get_album(album_id: str, market: str = None):
     }
     return _get(f"{API_BASE}/albums/{album_id}", params=params)
 
+
 @api_call([404])
 def get_album_tracks(album_id: str, limit: int = None, offset: int = None, market: str = None):
     params = {
@@ -18,6 +19,7 @@ def get_album_tracks(album_id: str, limit: int = None, offset: int = None, marke
         "market": market,
     }
     return _get(f"{API_BASE}/albums/{album_id}/tracks", params=params)
+
 
 @api_call([404])
 def get_albums(album_ids: Sequence[str], market: str = None):
