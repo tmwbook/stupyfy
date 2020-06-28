@@ -1,6 +1,6 @@
 from requests import get, post, put
 
-from .errors import SingletonViolation, SpotifyAPIError
+from .errors import SingletonViolation, SpotifyAPIResponseError
 
 API_BASE = "https://api.spotify.com/v1"
 
@@ -124,7 +124,7 @@ def api_call(expected_error_codes):
             r = func(*args, **kwargs)
             if r.status_code in range(400, 500):
                 if r.status_code in expected_error_codes:
-                    raise SpotifyAPIError(
+                    raise SpotifyAPIResponseError(
                         r.status_code,
                         r.json()['message'],
                         r.json()['reason']
@@ -134,7 +134,7 @@ def api_call(expected_error_codes):
                 r = func(*args, **kwargs)
                 if r.status_code in range(400, 500):
                     if r.status_code in expected_error_codes:
-                        raise SpotifyAPIError(
+                        raise SpotifyAPIResponseError(
                             r.status_code,
                             r.json()['message'],
                             r.json()['reason']

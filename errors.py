@@ -1,4 +1,4 @@
-class SpotifyAPIError(Exception):
+class SpotifyAPIResponseError(Exception):
 
     def __init__(self, status, message, reason, usr_message=""):
         if usr_message == "":
@@ -7,6 +7,10 @@ class SpotifyAPIError(Exception):
         self.status = status
         self.message = message
         self.reason = reason
+
+
+class SpotifyAPIParamError(Exception):
+    pass
 
 
 class SingletonViolation(Exception):
