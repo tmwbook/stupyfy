@@ -1,4 +1,4 @@
-from requests import get, post, put
+from requests import delete, get, post, put
 
 from .errors import SingletonViolation, SpotifyAPIResponseError
 
@@ -174,6 +174,19 @@ def _put(endpoint, params=None, data=None):
     params = params or {}
     data = data or {}
     return put(
+        endpoint,
+        headers={
+            "Authorization": "Bearer " + TokenManager.get_instance().get_current_token()
+        },
+        params=params,
+        json=data
+    )
+
+
+def _delete(endpoint, params=None, data=None):
+    params = params or {}
+    data = data or {}
+    return delete(
         endpoint,
         headers={
             "Authorization": "Bearer " + TokenManager.get_instance().get_current_token()
