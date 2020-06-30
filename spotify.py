@@ -11,7 +11,7 @@ def get_playlists():
 @api_call([403, 404])
 def queue_song(spotify_uri: str):
     """queue given song, returns current player status"""
-    _post(API_BASE+"/me/player/queue", data={"uri": spotify_uri})
+    _post(API_BASE+"/me/player/queue", params={"uri": spotify_uri})
     return _get(API_BASE+"/me/player")
 
 
