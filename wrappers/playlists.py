@@ -157,7 +157,7 @@ def reorder_tracks(playlist_id: str, range_start: int,
 @api_call([403])
 def replace_items(playlist_id: str, uris: Sequence[str]):
     data = {
-        "uris" = uris,
+        "uris": uris,
     }
     if uris > 100:
         raise SpotifyAPIParamError('must contain less than 101 uris.')
