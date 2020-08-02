@@ -121,7 +121,7 @@ def start_playback(device_id: str = None, context_uri: str = None,
         "offset": offset,
         "position_ms": position_ms,
     }
-    if context_uri and uris:
+    if context_uri and track_uris:
         raise SpotifyAPIParamError('context_uri and uris are mutally exclusive.')
     if offset:
         if isinstance(offset, int):

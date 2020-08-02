@@ -157,15 +157,15 @@ def _get(endpoint, params=None):
     )
 
 
-def _post(endpoint, params=None):
+def _post(endpoint, params=None, data=None):
     params = params or {}
-    # Who was the spotify dev the let data in a post be in the params??????
     return post(
         endpoint,
         headers={
             "Authorization": "Bearer " + TokenManager.get_instance().get_current_token()
         },
-        params=params
+        params=params,
+        json=data
     )
 
 
