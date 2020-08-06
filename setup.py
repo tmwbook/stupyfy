@@ -11,7 +11,7 @@ setuptools.setup(
     description="A python wrapper for the Spotify API",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="tbd",
+    url="https://github.com/tmwbook/pyfy",
     packages=setuptools.find_packages(),
     python_requires=">=3.6"
 )
