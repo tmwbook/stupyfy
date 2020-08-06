@@ -4,7 +4,7 @@ with open("README.md", "r") as f:
     long_description = f.read()
 
 setuptools.setup(
-    name="py-fy",
+    name="pyfy",
     version="0.0.1",
     author="Tom White",
     author_email="twhite at wpi dot edu",
