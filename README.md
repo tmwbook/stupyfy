@@ -45,6 +45,39 @@ There should only be one per Python proccess.
 Calls directly to the `__init__()` function will only work the first time.
 Otherwise the current instance will be returned.
 
+An example of a code flow that could be used for initial authorization:
+```python
+@app.route('/login/result')
+def auth_result():
+    if request.args.get('code', None):
+        # POST the login code from the IdP 
+        # to spotify to continue the authentication process
+        tokens = get_tokens(request.args.get('code'))
+        # Get the tokens
+        r = get(API_BASE+'/me', headers={"Authorization": "Bearer "+tokens["access_token"]}).json()
+        # See if the user is already in the database
+        local_user = User.query.filter_by(spotify_id=r['id']).first()
+        # Parse the tokens out
+        if local_user:
+            local_user.access_token = tokens['access_token']
+            local_user.refresh_token = tokens['refresh_token']
+        else:
+            local_user = User(
+                spotify_id = r['id'],
+                access_token = tokens['access_token'],
+                refresh_token = tokens['refresh_token'],
+            )
+            db.session.add(local_user)
+        db.session.commit()
+        # Accept that the IdP has validated the login
+        # and log in with our service
+        login_user(local_user)
+        # Continue the normal post auth flow for your app
+        return redirect(url_for('hello'))
+    else:
+        return redirect(url_for('index'))
+```
+
 ## Calling to the API
 All of the endpoints as defined by the [Spotify Web API](https://developer.spotify.com/documentation/web-api/reference/) are available in PyFy.
 They are separated by type as defined by the Web API:
