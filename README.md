@@ -6,6 +6,7 @@ A Python wrapper for the [Spotify Web API](https://developer.spotify.com/documen
 * Calls all return a [Requests](https://requests.readthedocs.io/en/master/) object (though most of the data you want can just be accessed by a call to `.json()`)
 * `TokenManager` will handle coordinating tokens in a single or multi-user environment and will even refresh expired tokens.
 
+Bugs and suggestions welcome. Please file a GitHub Issue.
 
 ## Creating a TokenManager
 **You will need some workflow defined by your app to get initial authentication with the Spotify Identity Provider (IdP).**
