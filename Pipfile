@@ -7,9 +7,6 @@ verify_ssl = true
 pylint = "*"
 
 [packages]
-flask = "*"
-flask-login = "*"
-flask-sqlalchemy = "*"
 requests = "*"
 
 [requires]
