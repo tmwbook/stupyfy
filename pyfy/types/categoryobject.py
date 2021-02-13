@@ -1,6 +1,6 @@
 class CategoryObject:
-    def __init__(self, href, icons, id, name):
+    def __init__(self, href, icons,spotify_id, name):
         self.href = href
         self.icons = icons
-        self.id = id
+        self.id = spotify_id
         self.name = name

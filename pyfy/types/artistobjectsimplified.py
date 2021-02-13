@@ -1,8 +1,8 @@
 class ArtistObjectSimplified:
-    def __init__(self, external_urls, href, id, name, type, uri):
+    def __init__(self, external_urls, href,spotify_id, name, api_type, uri):
         self.external_urls = external_urls
         self.href = href
-        self.id = id
+        self.id = spotify_id
         self.name = name
-        self.type = type
+        self.type = api_type
         self.uri = uri

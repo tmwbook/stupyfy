@@ -1,4 +1,3 @@
 class ExternalUrlObject:
-    def __init__(self, {key}, {value}):
-        self.{key} = {key}
-        self.{value} = {value}
+    def __init__(self, spotify_url):
+        self.spotify = spotify_url

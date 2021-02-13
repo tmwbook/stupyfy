@@ -1,5 +1,5 @@
 class AlbumObjectFull:
-    def __init__(self, album_type, artists, available_markets, copyrights, external_ids, external_urls, genres, href, id, images, label, name, popularity, release_date, release_date_precision, restrictions, tracks, type, uri):
+    def __init__(self, album_type, artists, available_markets, copyrights, external_ids, external_urls, genres, href,spotify_id, images, label, name, popularity, release_date, release_date_precision, restrictions, tracks, api_type, uri):
         self.album_type = album_type
         self.artists = artists
         self.available_markets = available_markets
@@ -8,7 +8,7 @@ class AlbumObjectFull:
         self.external_urls = external_urls
         self.genres = genres
         self.href = href
-        self.id = id
+        self.id = spotify_id
         self.images = images
         self.label = label
         self.name = name
@@ -17,5 +17,5 @@ class AlbumObjectFull:
         self.release_date_precision = release_date_precision
         self.restrictions = restrictions
         self.tracks = tracks
-        self.type = type
+        self.type = api_type
         self.uri = uri
