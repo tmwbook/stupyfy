@@ -180,8 +180,8 @@ def api_call(expected_error_codes):
                 if r.status_code in expected_error_codes:
                     raise SpotifyAPIResponseError(
                         r.status_code,
-                        r.json()['message'],
-                        r.json()['reason']
+                        r.json()['error']['message'],
+                        r.json()['error']['reason']
                     )
                 # Whoops let's try that again
                 mngr.refresh_tokens()
@@ -192,8 +192,8 @@ def api_call(expected_error_codes):
                     return mngr.api_fail_callback()
                 raise SpotifyAPIResponseError(
                     r.status_code,
-                    r.json()['message'],
-                    r.json()['reason']
+                    r.json()['error']['message'],
+                    r.json()['error']['reason']
                 )
             return r
         return wrapper
