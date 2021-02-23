@@ -112,6 +112,10 @@ def start_playback(device_id: str = None, context_uri: str = None,
                    track_uris: Sequence[str] = None,
                    offset: TypeVar('T', int, str) = None,
                    position_ms: int = None):
+    """
+    Spotify API limitaiton: URIs for Tracks can only be pass through\
+        `track_uris`
+    """
     params = {
         "device_id": device_id,
     }

@@ -13,9 +13,8 @@ OAUTH_ENDPOINT = "https://accounts.spotify.com/authorize"
 
 class TokenManager():
     """Singleton class to interact with the Spotify token API
-    (Method 1 of authentication) for existing tokens. First time
-    authentications and expired refresh tokens requiring reauthentication
-    against Spotify's IdP are not handled by this class.
+    (Method 1 of authentication) for tokens. Provides helpers
+    to assist with OAuth.
     
         client_id: A string of your application's client_id from Spotify
 
@@ -147,7 +146,8 @@ class TokenManager():
         """
         redirect_url, raw_params = response_path.split("?")
         params = parse_qs(raw_params)
-        if (error := params.get("error")) is None:
+        error = params.get("error")
+        if error is None:
             post_data = {
                 "grant_type": "authorization_code",
                 "code": params["code"][0],

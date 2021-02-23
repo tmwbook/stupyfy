@@ -63,12 +63,14 @@ def get_playlists(limit: int = None, offset: int = None):
         "limit": limit,
         "offset": offset,
     }
-    if limit > 50:
-        raise SpotifyAPIParamError("limit must be less than 51.")
-    if limit < 0:
-        raise SpotifyAPIParamError("limit must be more than 0.")
-    if offset > 100000:
-        raise SpotifyAPIParamError('offset must be less than 100,001.')
+    if limit is not None:
+        if limit > 50:
+            raise SpotifyAPIParamError("limit must be less than 51.")
+        if limit < 0:
+            raise SpotifyAPIParamError("limit must be more than 0.")
+    if offset is not None:
+        if offset > 100000:
+            raise SpotifyAPIParamError('offset must be less than 100,001.')
     return _get(f'{API_BASE}/me/playlists', params=params)
 
 
@@ -78,12 +80,14 @@ def get_user_playlists(user_id: str, limit: int = None, offset: int = None):
         "limit": limit,
         "offset": offset,
     }
-    if limit > 50:
-        raise SpotifyAPIParamError("limit must be less than 51.")
-    if limit < 0:
-        raise SpotifyAPIParamError("limit must be more than 0.")
-    if offset > 100000:
-        raise SpotifyAPIParamError('offset must be less than 100,001.')
+    if limit is not None:
+        if limit > 50:
+            raise SpotifyAPIParamError("limit must be less than 51.")
+        if limit < 0:
+            raise SpotifyAPIParamError("limit must be more than 0.")
+    if offset is not None:
+        if offset > 100000:
+            raise SpotifyAPIParamError('offset must be less than 100,001.')
     return _get(f'{API_BASE}/users/{user_id}/playlists', params=params)
 
 
