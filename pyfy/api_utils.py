@@ -136,7 +136,7 @@ class TokenManager():
         return f"{OAUTH_ENDPOINT}/?{urlencode(params)}"
 
 
-    def handle_auth_respnse(self, response_path):
+    def handle_auth_response(self, response_path):
         """
         Handle an approved or rejected auth request.\
             On success, will make another request to spotify to get the tokens.\
