@@ -49,7 +49,7 @@ class TokenManager():
     @classmethod
     def get_instance(cls):
         if cls._instance is None:
-            raise AttributeError("TokenManager has not been initialized yet.")
+            raise AttributeError("TokenManager has not been initialized yet. Use initialize() instead.")
         return cls._instance
 
     @classmethod
