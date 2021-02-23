@@ -1,6 +1,9 @@
+from urllib.parse import parse_qs, urlencode
+
 from requests import delete, get, post, put
 
-from .errors import SingletonViolation, SpotifyAPIResponseError
+from .errors import (SingletonViolation, SpotifyAPIResponseError,
+                     SpotifyOAuthGenerationError)
 
 API_BASE = "https://api.spotify.com/v1"
 
@@ -23,6 +26,7 @@ class TokenManager():
 
             This would be useful in a web application where there could be
             multiple active user sessions. For example:
+
             def token_query_source():
                 return db.query(current_user).token
 
@@ -35,6 +39,7 @@ class TokenManager():
         store_refreshed_token: A function that takes 1 argument (string)
             that will store a token for the current user if the old one
             expires. For example:
+            
             def store_refreshed_token(new_tkn):
                 user = db.query(current_user)
                 user.token = newtkn
@@ -108,6 +113,55 @@ class TokenManager():
 
     def get_current_token(self):
         return self.token_query_source()
+
+
+    def gen_auth_url(self, callback_url, scopes, show_dialog=False):
+        """
+        Generate an auth url to https://accounts.spotify.com
+
+        :param callback_url: The callback URL for spotify to respond to after\
+            the user approves or denies your request.
+        :param scopes: the scopes that you would like to be included for your app
+        :type scopes: list[str]
+        :param show_dialog: If you would like to force the user to see the spotify\
+            auth page again even if they are still authed to your service
+        """
+        params = {
+            "client_id": self.client_id,
+            "response_type": "code",
+            "redirect_uri": callback_url,
+            "scopes": " ".join(scopes),
+            "show_dialog": show_dialog
+        }
+        return f"{OAUTH_ENDPOINT}/?{urlencode(params)}"
+
+
+    def handle_auth_respnse(self, response_path):
+        """
+        Handle an approved or rejected auth request.\
+            On success, will make another request to spotify to get the tokens.\
+            On failure, stops the auth process
+
+        :param response_path: the full rquest URL hit by spotify calling back to your app
+        :returns: dict{spotify response} on success
+        """
+        redirect_url, raw_params = response_path.split("?")
+        params = parse_qs(raw_params)
+        if (error := params.get("error")) is None:
+            post_data = {
+                "grant_type": "authorization_code",
+                "code": params["code"][0],
+                "redirect_uri": redirect_url,
+                "client_id": self.client_id,
+                "client_secret": self.client_secret,
+            }
+            r = post(
+                TOKEN_ENDPOINT,
+                data=post_data
+            )
+            return r.json()
+        else:
+            raise SpotifyOAuthGenerationError(f"Error returned: {error}")
 
 
 def api_call(expected_error_codes):

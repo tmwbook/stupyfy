@@ -15,3 +15,6 @@ class SpotifyAPIParamError(Exception):
 
 class SingletonViolation(Exception):
     pass
+
+class SpotifyOAuthGenerationError(Exception):
+    pass
