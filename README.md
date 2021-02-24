@@ -10,6 +10,23 @@ Bugs and suggestions welcome. Please file a GitHub Issue.
 
 ## Quickstart
 
+### Installing
+This is a beta library, insofar that I haven't published it to PyPi yet.
+Because I haven't tested it fully, I also have not set a tags.
+This means you should leave it as editable so you can easily update it.
+If you would like to use it (please do!), here are some methods of getting it.
+
+pip
+```
+pip install -e git+https://github.com/tmwbook/pyfy
+```
+Pipfile (pipenv)
+```toml
+[packages]
+pyfy = { git = "https://github.com/tmwbook/pyfy", editable = true }
+```
+
+### Code
 Ensure that your app and its callback URLs are registered in the Spotify Developer Dashboard!
 
 ```python
