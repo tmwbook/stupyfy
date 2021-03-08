@@ -178,20 +178,22 @@ def api_call(expected_error_codes):
             r = func(*args, **kwargs)
             if r.status_code in range(400, 500):
                 if r.status_code in expected_error_codes:
+                    error = r.json().get('error', {})
                     raise SpotifyAPIResponseError(
                         r.status_code,
-                        r.json()['error']['message'],
-                        r.json()['error']['reason']
+                        error.get('message'),
+                        error.get('reason')
                     )
                 # Whoops let's try that again
                 mngr.refresh_tokens()
                 r = func(*args, **kwargs)
                 if r.status_code in range(400, 500):
                     if r.status_code in expected_error_codes:
+                        error = r.json().get('error', {})
                         raise SpotifyAPIResponseError(
                             r.status_code,
-                            r.json()['error']['message'],
-                            r.json()['error']['reason']
+                            error.get('message'),
+                            error.get('reason')
                         )
                     else:
                         return mngr.api_fail_callback()
