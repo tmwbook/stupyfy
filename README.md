@@ -12,13 +12,12 @@ Bugs and suggestions welcome. Please file a GitHub Issue.
 
 ### Installing
 This is a beta library, insofar that I haven't published it to PyPi yet.
-Because I haven't tested it fully, I also have not set any tags.
 This means you should leave it as editable so you can easily update it.
 If you would like to use it (please do!), here are some methods of getting it.
 
 pip
 ```
-pip install -e git+https://github.com/tmwbook/stupyfy@v1.0.0-beta#egg=pyfy
+pip install -e git+https://github.com/tmwbook/stupyfy@v1.0.0-beta#egg=stupyfy
 ```
 Pipfile (pipenv)
 ```toml
@@ -217,5 +216,3 @@ player.start_playback(
 ## Contributors
 * [Tom White](https://github.com/tmwbook) - Author
 
----
-Name pending, stupyfy is an existing projected on PyPi
