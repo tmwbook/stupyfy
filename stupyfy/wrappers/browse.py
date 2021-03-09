@@ -1,10 +1,10 @@
 import re
-from typing import Dict, Generic, Sequence, TypeVar
+from typing import Dict, Sequence, TypeVar
 
 from ..api_utils import API_BASE, _get, api_call
 from ..errors import SpotifyAPIParamError
 
-TUNABLE_DICT = Generic[str, TypeVar('T', int, float)]
+TUNABLE_DICT = Dict[str, TypeVar('T', int, float)]
 
 @api_call([404])
 def get_category(category_id: str, country: str = None, locale: str = None):

@@ -1,4 +1,4 @@
-class Cursor-BasedPagingObject:
+class CursorBasedPagingObject:
     def __init__(self, href, items, limit, next, cursors, total):
         self.href = href
         self.items = items

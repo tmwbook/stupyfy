@@ -1,3 +1,4 @@
+from functools import wraps
 from urllib.parse import parse_qs, urlencode
 
 from requests import delete, get, post, put
@@ -172,6 +173,7 @@ def api_call(expected_error_codes):
         from Spotify unrelated to the token renewal.
     """
     def decorator(func):
+        @wraps(func)
         def wrapper(*args, **kwargs):
             mngr = TokenManager.get_instance()
             # Assume the access token works:

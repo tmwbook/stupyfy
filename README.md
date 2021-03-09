@@ -1,5 +1,5 @@
-# PyFy
-> Pronounced Pi-Fi like Hi-Fi
+# Stupyfy
+> Pronounced Stew-pi-fi
 
 A Python wrapper for the [Spotify Web API](https://developer.spotify.com/documentation/web-api/).
 
@@ -18,12 +18,12 @@ If you would like to use it (please do!), here are some methods of getting it.
 
 pip
 ```
-pip install -e git+https://github.com/tmwbook/pyfy#egg=pyfy
+pip install -e git+https://github.com/tmwbook/stupyfy@v1.0.0-beta#egg=pyfy
 ```
 Pipfile (pipenv)
 ```toml
 [packages]
-pyfy = { git = "https://github.com/tmwbook/pyfy", editable = true }
+stupyfy = { git = "https://github.com/tmwbook/stupyfy", editable = true, ref = "v1.0.0-beta" }
 ```
 
 ### Code
@@ -36,8 +36,8 @@ for getting the current user from and interacting with a
 data store. Please provide your own method of doing this
 in whatever callback functions you choose to use.
 """
-from pyfy.api_utils import TokenManager
-from pyfy.wrappers import player
+from stupyfy.api_utils import TokenManager
+from stupyfy.wrappers import player
 
 def query_active_token():
     return current_user.access_token
@@ -127,7 +127,7 @@ def auth_result():
 ```
 
 ## TokenManager
-The central fixture of PyFy is the `TokenManager`. The `TokenManager` deals with coordinating active tokens,
+The central fixture of stupyfy is the `TokenManager`. The `TokenManager` deals with coordinating active tokens,
 helping with initial authorization, and hands control back to your app on an API call if something goes horribly wrong.
 
 TokenManager is a singleton class.
@@ -171,7 +171,7 @@ api_fail_callback: A function that you would like to be called after
 ```
 
 ## Calling to the API
-All of the endpoints as defined by the [Spotify Web API](https://developer.spotify.com/documentation/web-api/reference/) are available in PyFy.
+All of the endpoints as defined by the [Spotify Web API](https://developer.spotify.com/documentation/web-api/reference/) are available in stupyfy.
 They are separated by type as defined by the Web API:
 * Albums
 * Artists
@@ -193,18 +193,18 @@ Each wrapper method's arguments are type annotated if your editor supports that 
 
 **It is highly recommended that you use keyword args when calling these functions**
 
-Every documented error status code documented by the api is expected by PyFy.
+Every documented error status code documented by the api is expected by stupyfy.
 If it is returned by a an api_all, a `pyfy.errors.SpotifyAPIResponseError`
 
 ```python
 # Get information on a playlist
-from pyfy.wrappers import playlists
+from stupyfy.wrappers import playlists
 
 # requests Response object, data accessible through .json()
 playlists.get_playlist("spotify:playlist:4OjGTUFArsa9iECAC7PYTS")
 
 # Play a song
-from pyfy.wrappers import player
+from stupyfy.wrappers import player
 
 player.start_playback(
     track_uris=[
@@ -218,4 +218,4 @@ player.start_playback(
 * [Tom White](https://github.com/tmwbook) - Author
 
 ---
-Name pending, PyFy is an existing projected on PyPi
+Name pending, stupyfy is an existing projected on PyPi

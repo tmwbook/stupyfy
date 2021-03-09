@@ -4,8 +4,8 @@ with open("README.md", "r") as f:
     long_description = f.read()
 
 setuptools.setup(
-    name="pyfy",
-    version="0.0.1",
+    name="stupyfy",
+    version="1.0.0-beta",
     author="Tom White",
     author_email="twhite@wpi.edu",
     description="A python wrapper for the Spotify API",

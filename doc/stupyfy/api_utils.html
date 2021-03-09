@@ -1,0 +1,750 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>stupyfy.api_utils API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>stupyfy.api_utils</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">from functools import wraps
+from urllib.parse import parse_qs, urlencode
+
+from requests import delete, get, post, put
+
+from .errors import (SingletonViolation, SpotifyAPIResponseError,
+                     SpotifyOAuthGenerationError)
+
+API_BASE = &#34;https://api.spotify.com/v1&#34;
+
+TOKEN_ENDPOINT = &#34;https://accounts.spotify.com/api/token&#34;
+OAUTH_ENDPOINT = &#34;https://accounts.spotify.com/authorize&#34;
+
+
+class TokenManager():
+    &#34;&#34;&#34;Singleton class to interact with the Spotify token API
+    (Method 1 of authentication) for tokens. Provides helpers
+    to assist with OAuth.
+    
+        client_id: A string of your application&#39;s client_id from Spotify
+
+        client_secret: A string of your application&#39;s client_secret from Spotify
+
+        token_query_source: A function that will return what the current
+            user&#39;s token is.
+
+            This would be useful in a web application where there could be
+            multiple active user sessions. For example:
+
+            def token_query_source():
+                return db.query(current_user).token
+
+        refresh_token_query_source: A function that will return what the
+            current user&#39;s refresh token is.
+
+            This would be the same as `token_query_source` but for refresh
+            tokens.
+
+        store_refreshed_token: A function that takes 1 argument (string)
+            that will store a token for the current user if the old one
+            expires. For example:
+            
+            def store_refreshed_token(new_tkn):
+                user = db.query(current_user)
+                user.token = newtkn
+                db.commit()
+
+        api_fail_callback: A function that you would like to be called after
+            two Access Denied (or similar 400) responses. Its value will be
+            returned instead of the result of the API call.
+    &#34;&#34;&#34;
+    _instance = None
+
+    @classmethod
+    def get_instance(cls):
+        if cls._instance is None:
+            raise AttributeError(&#34;TokenManager has not been initialized yet. Use initialize() instead.&#34;)
+        return cls._instance
+
+    @classmethod
+    def initialize(
+            cls,
+            client_id,
+            client_secret,
+            token_query_source,
+            refresh_token_query_source,
+            store_refreshed_token,
+            api_fail_callback
+    ):
+        if cls._instance is None:
+            cls(
+                client_id,
+                client_secret,
+                token_query_source,
+                refresh_token_query_source,
+                store_refreshed_token,
+                api_fail_callback
+            )
+        return cls._instance
+
+
+    def __init__(
+            self,
+            client_id,
+            client_secret,
+            token_query_source,
+            refresh_token_query_source,
+            store_refreshed_token,
+            api_fail_callback
+    ):
+        if TokenManager._instance is not None:
+            raise SingletonViolation(&#34;Attepted to instantiate TokenManager when it has&#34;
+                            &#34; already been initilized. Use get_instance() instead.&#34;)
+        self.client_id = client_id
+        self.client_secret = client_secret
+        self.token_query_source = token_query_source
+        self.refresh_token_query_source = refresh_token_query_source
+        self.store_refreshed_token = store_refreshed_token
+        self.api_fail_callback = api_fail_callback
+
+        TokenManager._instance = self
+
+    def refresh_tokens(self):
+        params = {
+            &#34;grant_type&#34;: &#34;refresh_token&#34;,
+            &#34;refresh_token&#34;: self.refresh_token_query_source(),
+            &#34;client_id&#34;: self.client_id,
+            &#34;client_secret&#34;: self.client_secret,
+        }
+        r = post(TOKEN_ENDPOINT, data=params)
+        if r.status_code &lt; 400:
+            self.store_refreshed_token(r.json()[&#39;access_token&#39;])
+
+    def get_current_token(self):
+        return self.token_query_source()
+
+
+    def gen_auth_url(self, callback_url, scopes, show_dialog=False):
+        &#34;&#34;&#34;
+        Generate an auth url to https://accounts.spotify.com
+
+        :param callback_url: The callback URL for spotify to respond to after\
+            the user approves or denies your request.
+        :param scopes: the scopes that you would like to be included for your app
+        :type scopes: list[str]
+        :param show_dialog: If you would like to force the user to see the spotify\
+            auth page again even if they are still authed to your service
+        &#34;&#34;&#34;
+        params = {
+            &#34;client_id&#34;: self.client_id,
+            &#34;response_type&#34;: &#34;code&#34;,
+            &#34;redirect_uri&#34;: callback_url,
+            &#34;scopes&#34;: &#34; &#34;.join(scopes),
+            &#34;show_dialog&#34;: show_dialog
+        }
+        return f&#34;{OAUTH_ENDPOINT}/?{urlencode(params)}&#34;
+
+
+    def handle_auth_response(self, response_path):
+        &#34;&#34;&#34;
+        Handle an approved or rejected auth request.\
+            On success, will make another request to spotify to get the tokens.\
+            On failure, stops the auth process
+
+        :param response_path: the full rquest URL hit by spotify calling back to your app
+        :returns: dict{spotify response} on success
+        &#34;&#34;&#34;
+        redirect_url, raw_params = response_path.split(&#34;?&#34;)
+        params = parse_qs(raw_params)
+        error = params.get(&#34;error&#34;)
+        if error is None:
+            post_data = {
+                &#34;grant_type&#34;: &#34;authorization_code&#34;,
+                &#34;code&#34;: params[&#34;code&#34;][0],
+                &#34;redirect_uri&#34;: redirect_url,
+                &#34;client_id&#34;: self.client_id,
+                &#34;client_secret&#34;: self.client_secret,
+            }
+            r = post(
+                TOKEN_ENDPOINT,
+                data=post_data
+            )
+            return r.json()
+        else:
+            raise SpotifyOAuthGenerationError(f&#34;Error returned: {error}&#34;)
+
+
+def api_call(expected_error_codes):
+    &#34;&#34;&#34;
+    Wrapper to take care of potential token experations
+    
+    expected_error_code: An iterable of codes that can be reported
+        from Spotify unrelated to the token renewal.
+    &#34;&#34;&#34;
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            mngr = TokenManager.get_instance()
+            # Assume the access token works:
+            r = func(*args, **kwargs)
+            if r.status_code in range(400, 500):
+                if r.status_code in expected_error_codes:
+                    error = r.json().get(&#39;error&#39;, {})
+                    raise SpotifyAPIResponseError(
+                        r.status_code,
+                        error.get(&#39;message&#39;),
+                        error.get(&#39;reason&#39;)
+                    )
+                # Whoops let&#39;s try that again
+                mngr.refresh_tokens()
+                r = func(*args, **kwargs)
+                if r.status_code in range(400, 500):
+                    if r.status_code in expected_error_codes:
+                        error = r.json().get(&#39;error&#39;, {})
+                        raise SpotifyAPIResponseError(
+                            r.status_code,
+                            error.get(&#39;message&#39;),
+                            error.get(&#39;reason&#39;)
+                        )
+                    else:
+                        return mngr.api_fail_callback()
+            return r
+        return wrapper
+    return decorator
+
+
+def _get(endpoint, params=None):
+    if not params:
+        params = {}
+    return get(
+        endpoint,
+        headers={
+            &#34;Authorization&#34;: &#34;Bearer &#34; + TokenManager.get_instance().get_current_token()
+        },
+        params=params
+    )
+
+
+def _post(endpoint, params=None, data=None):
+    params = params or {}
+    return post(
+        endpoint,
+        headers={
+            &#34;Authorization&#34;: &#34;Bearer &#34; + TokenManager.get_instance().get_current_token()
+        },
+        params=params,
+        json=data
+    )
+
+
+def _put(endpoint, params=None, data=None):
+    params = params or {}
+    data = data or {}
+    return put(
+        endpoint,
+        headers={
+            &#34;Authorization&#34;: &#34;Bearer &#34; + TokenManager.get_instance().get_current_token()
+        },
+        params=params,
+        json=data
+    )
+
+
+def _delete(endpoint, params=None, data=None):
+    params = params or {}
+    data = data or {}
+    return delete(
+        endpoint,
+        headers={
+            &#34;Authorization&#34;: &#34;Bearer &#34; + TokenManager.get_instance().get_current_token()
+        },
+        params=params,
+        json=data
+    )</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="stupyfy.api_utils.api_call"><code class="name flex">
+<span>def <span class="ident">api_call</span></span>(<span>expected_error_codes)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Wrapper to take care of potential token experations</p>
+<p>expected_error_code: An iterable of codes that can be reported
+from Spotify unrelated to the token renewal.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def api_call(expected_error_codes):
+    &#34;&#34;&#34;
+    Wrapper to take care of potential token experations
+    
+    expected_error_code: An iterable of codes that can be reported
+        from Spotify unrelated to the token renewal.
+    &#34;&#34;&#34;
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            mngr = TokenManager.get_instance()
+            # Assume the access token works:
+            r = func(*args, **kwargs)
+            if r.status_code in range(400, 500):
+                if r.status_code in expected_error_codes:
+                    error = r.json().get(&#39;error&#39;, {})
+                    raise SpotifyAPIResponseError(
+                        r.status_code,
+                        error.get(&#39;message&#39;),
+                        error.get(&#39;reason&#39;)
+                    )
+                # Whoops let&#39;s try that again
+                mngr.refresh_tokens()
+                r = func(*args, **kwargs)
+                if r.status_code in range(400, 500):
+                    if r.status_code in expected_error_codes:
+                        error = r.json().get(&#39;error&#39;, {})
+                        raise SpotifyAPIResponseError(
+                            r.status_code,
+                            error.get(&#39;message&#39;),
+                            error.get(&#39;reason&#39;)
+                        )
+                    else:
+                        return mngr.api_fail_callback()
+            return r
+        return wrapper
+    return decorator</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="stupyfy.api_utils.TokenManager"><code class="flex name class">
+<span>class <span class="ident">TokenManager</span></span>
+<span>(</span><span>client_id, client_secret, token_query_source, refresh_token_query_source, store_refreshed_token, api_fail_callback)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Singleton class to interact with the Spotify token API
+(Method 1 of authentication) for tokens. Provides helpers
+to assist with OAuth.</p>
+<pre><code>client_id: A string of your application's client_id from Spotify
+
+client_secret: A string of your application's client_secret from Spotify
+
+token_query_source: A function that will return what the current
+    user's token is.
+
+    This would be useful in a web application where there could be
+    multiple active user sessions. For example:
+
+    def token_query_source():
+        return db.query(current_user).token
+
+refresh_token_query_source: A function that will return what the
+    current user's refresh token is.
+
+    This would be the same as &lt;code&gt;token\_query\_source&lt;/code&gt; but for refresh
+    tokens.
+
+store_refreshed_token: A function that takes 1 argument (string)
+    that will store a token for the current user if the old one
+    expires. For example:
+
+    def store_refreshed_token(new_tkn):
+        user = db.query(current_user)
+        user.token = newtkn
+        db.commit()
+
+api_fail_callback: A function that you would like to be called after
+    two Access Denied (or similar 400) responses. Its value will be
+    returned instead of the result of the API call.
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class TokenManager():
+    &#34;&#34;&#34;Singleton class to interact with the Spotify token API
+    (Method 1 of authentication) for tokens. Provides helpers
+    to assist with OAuth.
+    
+        client_id: A string of your application&#39;s client_id from Spotify
+
+        client_secret: A string of your application&#39;s client_secret from Spotify
+
+        token_query_source: A function that will return what the current
+            user&#39;s token is.
+
+            This would be useful in a web application where there could be
+            multiple active user sessions. For example:
+
+            def token_query_source():
+                return db.query(current_user).token
+
+        refresh_token_query_source: A function that will return what the
+            current user&#39;s refresh token is.
+
+            This would be the same as `token_query_source` but for refresh
+            tokens.
+
+        store_refreshed_token: A function that takes 1 argument (string)
+            that will store a token for the current user if the old one
+            expires. For example:
+            
+            def store_refreshed_token(new_tkn):
+                user = db.query(current_user)
+                user.token = newtkn
+                db.commit()
+
+        api_fail_callback: A function that you would like to be called after
+            two Access Denied (or similar 400) responses. Its value will be
+            returned instead of the result of the API call.
+    &#34;&#34;&#34;
+    _instance = None
+
+    @classmethod
+    def get_instance(cls):
+        if cls._instance is None:
+            raise AttributeError(&#34;TokenManager has not been initialized yet. Use initialize() instead.&#34;)
+        return cls._instance
+
+    @classmethod
+    def initialize(
+            cls,
+            client_id,
+            client_secret,
+            token_query_source,
+            refresh_token_query_source,
+            store_refreshed_token,
+            api_fail_callback
+    ):
+        if cls._instance is None:
+            cls(
+                client_id,
+                client_secret,
+                token_query_source,
+                refresh_token_query_source,
+                store_refreshed_token,
+                api_fail_callback
+            )
+        return cls._instance
+
+
+    def __init__(
+            self,
+            client_id,
+            client_secret,
+            token_query_source,
+            refresh_token_query_source,
+            store_refreshed_token,
+            api_fail_callback
+    ):
+        if TokenManager._instance is not None:
+            raise SingletonViolation(&#34;Attepted to instantiate TokenManager when it has&#34;
+                            &#34; already been initilized. Use get_instance() instead.&#34;)
+        self.client_id = client_id
+        self.client_secret = client_secret
+        self.token_query_source = token_query_source
+        self.refresh_token_query_source = refresh_token_query_source
+        self.store_refreshed_token = store_refreshed_token
+        self.api_fail_callback = api_fail_callback
+
+        TokenManager._instance = self
+
+    def refresh_tokens(self):
+        params = {
+            &#34;grant_type&#34;: &#34;refresh_token&#34;,
+            &#34;refresh_token&#34;: self.refresh_token_query_source(),
+            &#34;client_id&#34;: self.client_id,
+            &#34;client_secret&#34;: self.client_secret,
+        }
+        r = post(TOKEN_ENDPOINT, data=params)
+        if r.status_code &lt; 400:
+            self.store_refreshed_token(r.json()[&#39;access_token&#39;])
+
+    def get_current_token(self):
+        return self.token_query_source()
+
+
+    def gen_auth_url(self, callback_url, scopes, show_dialog=False):
+        &#34;&#34;&#34;
+        Generate an auth url to https://accounts.spotify.com
+
+        :param callback_url: The callback URL for spotify to respond to after\
+            the user approves or denies your request.
+        :param scopes: the scopes that you would like to be included for your app
+        :type scopes: list[str]
+        :param show_dialog: If you would like to force the user to see the spotify\
+            auth page again even if they are still authed to your service
+        &#34;&#34;&#34;
+        params = {
+            &#34;client_id&#34;: self.client_id,
+            &#34;response_type&#34;: &#34;code&#34;,
+            &#34;redirect_uri&#34;: callback_url,
+            &#34;scopes&#34;: &#34; &#34;.join(scopes),
+            &#34;show_dialog&#34;: show_dialog
+        }
+        return f&#34;{OAUTH_ENDPOINT}/?{urlencode(params)}&#34;
+
+
+    def handle_auth_response(self, response_path):
+        &#34;&#34;&#34;
+        Handle an approved or rejected auth request.\
+            On success, will make another request to spotify to get the tokens.\
+            On failure, stops the auth process
+
+        :param response_path: the full rquest URL hit by spotify calling back to your app
+        :returns: dict{spotify response} on success
+        &#34;&#34;&#34;
+        redirect_url, raw_params = response_path.split(&#34;?&#34;)
+        params = parse_qs(raw_params)
+        error = params.get(&#34;error&#34;)
+        if error is None:
+            post_data = {
+                &#34;grant_type&#34;: &#34;authorization_code&#34;,
+                &#34;code&#34;: params[&#34;code&#34;][0],
+                &#34;redirect_uri&#34;: redirect_url,
+                &#34;client_id&#34;: self.client_id,
+                &#34;client_secret&#34;: self.client_secret,
+            }
+            r = post(
+                TOKEN_ENDPOINT,
+                data=post_data
+            )
+            return r.json()
+        else:
+            raise SpotifyOAuthGenerationError(f&#34;Error returned: {error}&#34;)</code></pre>
+</details>
+<h3>Static methods</h3>
+<dl>
+<dt id="stupyfy.api_utils.TokenManager.get_instance"><code class="name flex">
+<span>def <span class="ident">get_instance</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def get_instance(cls):
+    if cls._instance is None:
+        raise AttributeError(&#34;TokenManager has not been initialized yet. Use initialize() instead.&#34;)
+    return cls._instance</code></pre>
+</details>
+</dd>
+<dt id="stupyfy.api_utils.TokenManager.initialize"><code class="name flex">
+<span>def <span class="ident">initialize</span></span>(<span>client_id, client_secret, token_query_source, refresh_token_query_source, store_refreshed_token, api_fail_callback)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def initialize(
+        cls,
+        client_id,
+        client_secret,
+        token_query_source,
+        refresh_token_query_source,
+        store_refreshed_token,
+        api_fail_callback
+):
+    if cls._instance is None:
+        cls(
+            client_id,
+            client_secret,
+            token_query_source,
+            refresh_token_query_source,
+            store_refreshed_token,
+            api_fail_callback
+        )
+    return cls._instance</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="stupyfy.api_utils.TokenManager.gen_auth_url"><code class="name flex">
+<span>def <span class="ident">gen_auth_url</span></span>(<span>self, callback_url, scopes, show_dialog=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Generate an auth url to <a href="https://accounts.spotify.com">https://accounts.spotify.com</a></p>
+<p>:param callback_url: The callback URL for spotify to respond to after
+the user approves or denies your request.
+:param scopes: the scopes that you would like to be included for your app
+:type scopes: list[str]
+:param show_dialog: If you would like to force the user to see the spotify
+auth page again even if they are still authed to your service</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def gen_auth_url(self, callback_url, scopes, show_dialog=False):
+    &#34;&#34;&#34;
+    Generate an auth url to https://accounts.spotify.com
+
+    :param callback_url: The callback URL for spotify to respond to after\
+        the user approves or denies your request.
+    :param scopes: the scopes that you would like to be included for your app
+    :type scopes: list[str]
+    :param show_dialog: If you would like to force the user to see the spotify\
+        auth page again even if they are still authed to your service
+    &#34;&#34;&#34;
+    params = {
+        &#34;client_id&#34;: self.client_id,
+        &#34;response_type&#34;: &#34;code&#34;,
+        &#34;redirect_uri&#34;: callback_url,
+        &#34;scopes&#34;: &#34; &#34;.join(scopes),
+        &#34;show_dialog&#34;: show_dialog
+    }
+    return f&#34;{OAUTH_ENDPOINT}/?{urlencode(params)}&#34;</code></pre>
+</details>
+</dd>
+<dt id="stupyfy.api_utils.TokenManager.get_current_token"><code class="name flex">
+<span>def <span class="ident">get_current_token</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_current_token(self):
+    return self.token_query_source()</code></pre>
+</details>
+</dd>
+<dt id="stupyfy.api_utils.TokenManager.handle_auth_response"><code class="name flex">
+<span>def <span class="ident">handle_auth_response</span></span>(<span>self, response_path)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Handle an approved or rejected auth request.
+On success, will make another request to spotify to get the tokens.
+On failure, stops the auth process</p>
+<p>:param response_path: the full rquest URL hit by spotify calling back to your app
+:returns: dict{spotify response} on success</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def handle_auth_response(self, response_path):
+    &#34;&#34;&#34;
+    Handle an approved or rejected auth request.\
+        On success, will make another request to spotify to get the tokens.\
+        On failure, stops the auth process
+
+    :param response_path: the full rquest URL hit by spotify calling back to your app
+    :returns: dict{spotify response} on success
+    &#34;&#34;&#34;
+    redirect_url, raw_params = response_path.split(&#34;?&#34;)
+    params = parse_qs(raw_params)
+    error = params.get(&#34;error&#34;)
+    if error is None:
+        post_data = {
+            &#34;grant_type&#34;: &#34;authorization_code&#34;,
+            &#34;code&#34;: params[&#34;code&#34;][0],
+            &#34;redirect_uri&#34;: redirect_url,
+            &#34;client_id&#34;: self.client_id,
+            &#34;client_secret&#34;: self.client_secret,
+        }
+        r = post(
+            TOKEN_ENDPOINT,
+            data=post_data
+        )
+        return r.json()
+    else:
+        raise SpotifyOAuthGenerationError(f&#34;Error returned: {error}&#34;)</code></pre>
+</details>
+</dd>
+<dt id="stupyfy.api_utils.TokenManager.refresh_tokens"><code class="name flex">
+<span>def <span class="ident">refresh_tokens</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def refresh_tokens(self):
+    params = {
+        &#34;grant_type&#34;: &#34;refresh_token&#34;,
+        &#34;refresh_token&#34;: self.refresh_token_query_source(),
+        &#34;client_id&#34;: self.client_id,
+        &#34;client_secret&#34;: self.client_secret,
+    }
+    r = post(TOKEN_ENDPOINT, data=params)
+    if r.status_code &lt; 400:
+        self.store_refreshed_token(r.json()[&#39;access_token&#39;])</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="stupyfy" href="index.html">stupyfy</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="stupyfy.api_utils.api_call" href="#stupyfy.api_utils.api_call">api_call</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="stupyfy.api_utils.TokenManager" href="#stupyfy.api_utils.TokenManager">TokenManager</a></code></h4>
+<ul class="">
+<li><code><a title="stupyfy.api_utils.TokenManager.gen_auth_url" href="#stupyfy.api_utils.TokenManager.gen_auth_url">gen_auth_url</a></code></li>
+<li><code><a title="stupyfy.api_utils.TokenManager.get_current_token" href="#stupyfy.api_utils.TokenManager.get_current_token">get_current_token</a></code></li>
+<li><code><a title="stupyfy.api_utils.TokenManager.get_instance" href="#stupyfy.api_utils.TokenManager.get_instance">get_instance</a></code></li>
+<li><code><a title="stupyfy.api_utils.TokenManager.handle_auth_response" href="#stupyfy.api_utils.TokenManager.handle_auth_response">handle_auth_response</a></code></li>
+<li><code><a title="stupyfy.api_utils.TokenManager.initialize" href="#stupyfy.api_utils.TokenManager.initialize">initialize</a></code></li>
+<li><code><a title="stupyfy.api_utils.TokenManager.refresh_tokens" href="#stupyfy.api_utils.TokenManager.refresh_tokens">refresh_tokens</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>
